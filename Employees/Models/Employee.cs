@@ -14,11 +14,11 @@ namespace Employees.Models
         public int Age { get; set; }
 
         [JsonPropertyName("employee_salary")]
-        public int Salary { get; set; }
+        public decimal Salary { get; set; }
 
         [JsonPropertyName("profile_image")]
         public string ProfileImage { get; set; } = "https://maycet.github.io/img/alien.png";
 
-        public int AnualSalary { get; set; }
+        public decimal AnualSalary { get; set; }
     }
 }

@@ -2,6 +2,6 @@
 {
     public class EmployeesManager
     {
-        public int CalculateAnnualSalary(int monthlySalary) => monthlySalary * 12;
+        public decimal CalculateAnnualSalary(decimal monthlySalary) => Math.Round(monthlySalary * 12, 2);
     }
 }
