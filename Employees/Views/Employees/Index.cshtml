@@ -10,7 +10,7 @@
     <div class="col">
         <form asp-action="Index" method="get">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" id="employeeId" name="employeeId" placeholder="Employee ID">
+                <input type="text" class="form-control" id="employeeId" name="employeeId" placeholder="Employee ID (for details)">
                 <button type="button" onclick="SearchEmployee()" class="btn btn-primary">Search</button>
             </div>
         </form>
@@ -23,8 +23,8 @@
             <tr>
                 <th>Employee ID</th>
                 <th>Name</th>
-                <th>Salary</th>
                 <th>Age</th>
+                <th>Salary</th>
                 <th>Annual Salary</th>
             </tr>
         </thead>
@@ -34,6 +34,7 @@
                 <tr>
                     <td>@employee.Id</td>
                     <td>@employee.Name</td>
+                    <td>@employee.Age</td>
                     <td>@employee.Salary</td>
                     <td>@employee.AnualSalary</td>
                 </tr>
@@ -41,6 +42,13 @@
         </tbody>
     </table>
 </div>
+
+@if (Model.Count == 0)
+{
+    <div>
+        If you don't see any records in this list it may be because the Data Access API is cooling down, just wait a minute and refresh this page.
+    </div>
+}
 
 <script>
     function SearchEmployee() {

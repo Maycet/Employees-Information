@@ -10,6 +10,13 @@
     <div class="card-body">
         <h5 class="card-title">Employee Information</h5>
         <table class="table table-bordered">
+            @if (!string.IsNullOrEmpty(@Model.ProfileImage))
+            {
+                <tr>
+                    <th></th>
+                    <td><img style="max-height:200px" src=@Model.ProfileImage alt="Profile picture"></td>
+                </tr>
+            }
             <tr>
                 <th>Employee ID</th>
                 <td>@Model.Id</td>
@@ -17,6 +24,10 @@
             <tr>
                 <th>Name</th>
                 <td>@Model.Name</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>@Model.Age</td>
             </tr>
             <tr>
                 <th>Salary</th>

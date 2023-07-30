@@ -36,6 +36,8 @@ namespace Employees.Controllers
             if (Employee != null)
             {
                 Employee.AnualSalary = _EmployeesManager.CalculateAnnualSalary(Employee.Salary);
+                if (string.IsNullOrWhiteSpace(Employee.ProfileImage)) Employee.ProfileImage = "https://maycet.github.io/img/alien.png";
+
                 return View(Employee);
             }
 

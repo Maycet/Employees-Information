@@ -1,5 +1,6 @@
 ﻿using Employees.Models;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Employees.DataAccess
 {
@@ -20,13 +21,12 @@ namespace Employees.DataAccess
             try
             {
                 HttpResponseMessage Response = await _HttpClient.GetAsync($"{_BaseUrl}employees");
-
                 Response.EnsureSuccessStatusCode();
 
                 EmployeesApiResponse EmployeesResponse =
                     JsonSerializer.Deserialize<EmployeesApiResponse>(await Response.Content.ReadAsStringAsync()) ?? new EmployeesApiResponse();
 
-                return EmployeesResponse.Data;
+                return EmployeesResponse.Employees;
             }
             catch (Exception Exception)
             {
@@ -40,13 +40,12 @@ namespace Employees.DataAccess
             try
             {
                 HttpResponseMessage Response = await _HttpClient.GetAsync($"{_BaseUrl}employee/{employeeId}");
-
                 Response.EnsureSuccessStatusCode();
 
                 EmployeeApiResponse EmployeeResponse =
                     JsonSerializer.Deserialize<EmployeeApiResponse>(await Response.Content.ReadAsStringAsync()) ?? new EmployeeApiResponse();
 
-                return EmployeeResponse.Data;
+                return EmployeeResponse.Employee;
             }
             catch (Exception Exception)
             {
@@ -58,15 +57,29 @@ namespace Employees.DataAccess
 
     class EmployeesApiResponse
     {
-        public EmployeesApiResponse() { Data = new List<Employee>(); }
+        public EmployeesApiResponse() { Employees = new List<Employee>(); }
 
-        public List<Employee> Data { get; set; }
+        [JsonPropertyName("status")]
+        public string Status { get; set; } = string.Empty;
+
+        [JsonPropertyName("data")]
+        public List<Employee> Employees { get; set; }
+
+        [JsonPropertyName("message")]
+        public string Message { get; set; } = string.Empty;
     }
 
     class EmployeeApiResponse
     {
-        public EmployeeApiResponse() { Data = new Employee(); }
+        public EmployeeApiResponse() { Employee = new Employee(); }
 
-        public Employee Data { get; set; }
+        [JsonPropertyName("status")]
+        public string Status { get; set; } = string.Empty;
+
+        [JsonPropertyName("data")]
+        public Employee Employee { get; set; }
+
+        [JsonPropertyName("message")]
+        public string Message { get; set; } = string.Empty;
     }
 }
