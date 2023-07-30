@@ -1,0 +1,54 @@
+﻿@model List<Employee>
+
+@{
+    ViewData["Title"] = "Employee Information";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col">
+        <form asp-action="Index" method="get">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="employeeId" name="employeeId" placeholder="Employee ID">
+                <button type="button" onclick="SearchEmployee()" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Salary</th>
+                <th>Age</th>
+                <th>Annual Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Employee employee in Model)
+            {
+                <tr>
+                    <td>@employee.Id</td>
+                    <td>@employee.Name</td>
+                    <td>@employee.Salary</td>
+                    <td>@employee.AnualSalary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function SearchEmployee() {
+        var EmployeeId = document.getElementById("employeeId").value;
+        if (EmployeeId === "") {
+            window.location.href = "/Employees/Index";
+        } else {
+            window.location.href = "/Employees/Details/" + employeeId;
+        }
+    }
+</script>
