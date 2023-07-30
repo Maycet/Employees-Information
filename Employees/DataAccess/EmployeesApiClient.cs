@@ -7,7 +7,7 @@ namespace Employees.DataAccess
     {
         private readonly HttpClient _HttpClient;
         private readonly ILogger<EmployeesApiClient> _Logger;
-        private const string _BaseUrl = "https://dummy.restapiexample.com/public/api/v1/";
+        private const string _BaseUrl = "https://dummy.restapiexample.com/api/v1/";
 
         public EmployeesApiClient(HttpClient httpClient, ILogger<EmployeesApiClient> logger)
         {
