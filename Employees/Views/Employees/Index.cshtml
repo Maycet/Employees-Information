@@ -44,8 +44,8 @@
 
 <script>
     function SearchEmployee() {
-        var EmployeeId = document.getElementById("employeeId").value;
-        if (EmployeeId === "") {
+        var employeeId = document.getElementById("employeeId").value;
+        if (employeeId === "") {
             window.location.href = "/Employees/Index";
         } else {
             window.location.href = "/Employees/Details/" + employeeId;
