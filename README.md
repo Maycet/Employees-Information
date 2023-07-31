@@ -11,7 +11,7 @@ This is an MVC application that consumes APIs to retrieve employee information a
 
 1. Clone the repository:
 
-`git clone [https://github.com/Maycet/Employees-Information](https://github.com/Maycet/Employees-Information)`
+`git clone https://github.com/Maycet/Employees-Information`
 
 2. Open the project in Visual Studio.
 
